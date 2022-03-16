@@ -43,3 +43,4 @@ for (let i = 0; i < 10; i++) {
 [1,2,3,4,5].forEach(i => console.log(i));
 
 const out = [1,2,3,4,5].map(i => i*2);
+
