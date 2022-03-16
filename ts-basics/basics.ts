@@ -14,15 +14,12 @@ const names:string[] = userName.split(" ")
 const myvalues: Array<number> = [1,2,3,4,5];
 
 interface Person {
-    name: string;
-    age: number;
+    first: string,
+    last: string,
+    cool?: boolean
 }
 
-const myPerson: {
-    first: string;
-    last: string;
-    cool?: boolean;
-} = {
+const myPerson:Person = {
     first: "Jack",
     last: "Herrington",
     cool: true
