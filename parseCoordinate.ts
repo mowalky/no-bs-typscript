@@ -18,6 +18,7 @@ function praseCoordinateFromNumbers(x:number, y:number):Coordinate {
     }
 }
 
+function parseCoordinate(str:string):Coordinate;
 function parseCoordinate(obj:Coordinate):Coordinate;
 function parseCoordinate(x:number, y:number):Coordinate;
 function parseCoordinate(arg1:unknown,arg2?:unknown):Coordinate {
@@ -26,7 +27,12 @@ function parseCoordinate(arg1:unknown,arg2?:unknown):Coordinate {
         y: 0,
     }
 
-    if (typeof arg1 === 'object') {
+    if (typeof arg1 === 'string') {
+        (arg1 as string).split(",").forEach((str)=>{
+            const [key, value] = str.split(":");
+            coord[key as 'x' | 'y'] = parseInt(value,10);
+        })
+    } else if (typeof arg1 === 'object') {
         coord = {
             ...(arg1 as Coordinate),
         }
@@ -42,3 +48,4 @@ function parseCoordinate(arg1:unknown,arg2?:unknown):Coordinate {
 
 console.log(parseCoordinate(10,20));
 console.log(parseCoordinate({x:43,y:40}));
+console.log(parseCoordinate("x:45,y:40"));
